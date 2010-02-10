@@ -62,11 +62,36 @@ class ShirtItem < Item
   
 end
 
+Migrations ( sorry, no generator yet )
+==========
+
+create_table "custom_attributes", :force => true do |t|
+  t.string   "name"
+  t.integer  "customizable_id"
+  t.string   "customizable_type"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+  t.decimal  "value_value",       :precision => 20, :scale => 10
+  t.string   "value_unit"
+  t.string   "type"
+  t.boolean  "value_boolean"
+end
+
+add_index "custom_attributes", ["customizable_id", "customizable_type", "name"], :name => "index_on_custom_attributes_id_and_type_and_name"
+add_index "custom_attributes", ["customizable_id", "customizable_type"], :name => "index_on_custom_attributes_id_and_type"
+
+create_table "custom_objects", :force => true do |t|
+  t.string   "type"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+  t.string   "customizable_type"
+  t.integer  "customizable_id"
+end
+
 
 Todo
 ====
-
-Migrations for CustomAttributes Models
+More dedicated custom_xx tables, at the moment we waste some space in the db, but should be no problem for normal apps.
 
 
 Credits
