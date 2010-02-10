@@ -1,13 +1,30 @@
 CustomAttributes
 ================
 
-Introduction goes here.
+(alpha release)
+
+Adds custom attributes through a CustomAttribute Model, but behaves like standard AR attributes.
+Has support some basic validations.
 
 
 Example
 =======
 
-Example goes here.
+class CarpetItem < Item
+  
+  has_custom_attributes :width, :length, :height, :class=>CustomValueWithUnit, :unit=>'cm'
+  has_custom_attribute :sqm, :class=>CustomValueWithUnit, :unit=>'m**2'
+  has_custom_attribute :weight, :class=>CustomValueWithUnit, :unit=>'kg'
 
+end
+
+class ShirtItem < Item
+  
+  has_custom_attribute :size, :class=>CustomString
+  has_custom_attribute :weight, :class=>CustomValueWithUnit, :unit=>'kg'
+
+  validates_presence_of :size
+  
+end
 
 Copyright (c) 2010 [Ninja Concept/Marco Sehrer], released under the MIT license
