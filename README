@@ -19,11 +19,12 @@ Brings a taste of document-based DBs like Mongo or CloudDB to ActiveRecord.
 DSL Example 
 ===========
 
-class CanvasItem < Item
-  has_custom :width, :height, :unit=>'cm'
-end
 
-class CanvasDesign < Design
+class Design < ActiveRecord::Base
+
+  acts_as_custom_attribute_container
+  
+  has_custom :width, :height, :unit=>'cm'
   
   has_custom :colors do
     has_custom :name, :string
@@ -36,14 +37,12 @@ class CanvasDesign < Design
   end
 end
 
-class CanvasSpec < ItemSpec 
-  has_custom :medium, :string
-end
-
 
 
 Example
 =======
+
+(alternatively you can use a more verbose form)
 
 class CarpetItem < Item
   
@@ -61,6 +60,8 @@ class ShirtItem < Item
   validates_presence_of :size
   
 end
+
+
 
 Migrations ( sorry, no generator yet )
 ==========
