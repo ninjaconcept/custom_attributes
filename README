@@ -44,6 +44,10 @@ Example
 
 (alternatively you can use a more verbose form)
 
+class Item < ActiveRecord::Base
+  acts_as_custom_attribute_container
+end
+
 class CarpetItem < Item
   
   has_custom_attributes :width, :length, :height, :class=>CustomValueWithUnit, :unit=>'cm'
