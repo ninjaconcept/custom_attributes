@@ -62,4 +62,18 @@ class ShirtItem < Item
   
 end
 
+
+Todo
+====
+
+Migrations for CustomAttributes Models
+
+
+Credits
+=======
+
+We use Stick::Units for the CustomValueWithUnit part
+http://stick.rubyforge.org/
+
+
 Copyright (c) 2010 [Ninja Concept/Marco Sehrer], released under the MIT license
