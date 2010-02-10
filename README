@@ -3,8 +3,43 @@ CustomAttributes
 
 (alpha release)
 
+1)
 Adds custom attributes through a CustomAttribute Model, but behaves like standard AR attributes.
 Has support some basic validations.
+
+2)
+CustomValueWithUnit supports composed attributes of value and unit. 
+Has support for validation of unit compatibility. 
+
+3)
+a DSL for creating attributed models, which brings also support for nested Custom Objects, wich are mapped to plain 'AR-Row-Models'.
+Brings a taste of document-based DBs like Mongo or CloudDB to ActiveRecord.
+
+
+DSL Example 
+===========
+
+class CanvasItem < Item
+  has_custom :width, :height, :unit=>'cm'
+end
+
+class CanvasDesign < Design
+  
+  has_custom :colors do
+    has_custom :name, :string
+  end
+  
+  has_custom :designer do
+    has_custom :name, :string
+    has_custom :website, :string
+    has_custom :biography, :string #todo: :text
+  end
+end
+
+class CanvasSpec < ItemSpec 
+  has_custom :medium, :string
+end
+
 
 
 Example
