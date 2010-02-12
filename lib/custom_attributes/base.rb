@@ -108,11 +108,11 @@ module CustomAttributes
       # callbacks you can overwrite to get specific form layouts
       # todo form_helper
       
-      def self.custom_properties
+      def custom_properties
         custom_attribute_names
       end
 
-      def self.sorted_custom_attribute_names
+      def sorted_custom_attribute_names
         custom_attribute_names
       end
     
