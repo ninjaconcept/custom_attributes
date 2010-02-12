@@ -104,6 +104,17 @@ module CustomAttributes
       def default_unit_for_custom_attribute attr_name
         custom_attribute_map[attr_name.to_sym][:unit] rescue nil
       end
+      
+      # callbacks you can overwrite to get specific form layouts
+      # todo form_helper
+      
+      def self.custom_properties
+        custom_attribute_names
+      end
+
+      def self.sorted_custom_attribute_names
+        custom_attribute_names
+      end
     
     end
   
